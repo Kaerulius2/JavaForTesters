@@ -6,8 +6,8 @@ public class MyFirstProgram
 public static void main(String[] args){
 	System.out.println("Func vs Met - distance between points");
 
-	Point first = new Point(2,3);
-	Point second = new Point(5,6);
+	Point first = new Point(-1,-1);
+	Point second = new Point(3,3);
 
 	System.out.println("Function: " + distance(first,second));
 	System.out.println("Metod: " + first.distance(second));
