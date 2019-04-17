@@ -4,13 +4,13 @@ public class MyFirstProgram
 {
 
 public static void main(String[] args){
-	System.out.println("Func vs Met - расстояние между точками");
+	System.out.println("Func vs Met - distance between points");
 
 	Point first = new Point(2,3);
 	Point second = new Point(5,6);
 
-	System.out.println("Функция: " + distance(first,second));
-	System.out.println("Метод: " + first.distance(second));
+	System.out.println("Function: " + distance(first,second));
+	System.out.println("Metod: " + first.distance(second));
 
 	}
 
