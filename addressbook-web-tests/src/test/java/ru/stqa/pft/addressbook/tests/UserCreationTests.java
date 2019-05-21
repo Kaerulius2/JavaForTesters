@@ -8,9 +8,9 @@ public class UserCreationTests extends TestBase {
 
     @Test
     public void testUserCreations() throws Exception {
-        app.getContactHelper().initCreationUser();
-        app.getContactHelper().fillUserForm(new UserData("Alex", "V", "Golubkov", "100111 Tvetskaya str 123", "+79991112233", "email@email.com"));
-        app.getContactHelper().submitUserCreation();
+        app.getUserHelper().initCreationUser();
+        app.getUserHelper().fillUserForm(new UserData("Alex", "V", "Golubkov", "100111 Tvetskaya str 123", "+79991112233", "email@email.com", "TestGroup"), true);
+        app.getUserHelper().submitUserCreation();
         app.getNavigationHelper().gotoHomePage();
     }
 

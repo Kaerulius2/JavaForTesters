@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
     WebDriver wd;
-    private ContactHelper contactHelper;
+    private UserHelper userHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private SessionHelper sessionHelper;
@@ -33,12 +33,12 @@ public class ApplicationManager {
             System.setProperty("webdriver.edge.driver", "C:\\Edgedriver\\MicrosoftWebDriver.exe"); //C:\Edgedriver
             wd = new EdgeDriver();
         }
-        wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
-        contactHelper = new ContactHelper(wd);
+        userHelper = new UserHelper(wd);
         sessionHelper.login("admin", "secret");
     }
 
@@ -57,7 +57,7 @@ public class ApplicationManager {
         return navigationHelper;
     }
 
-    public ContactHelper getContactHelper() {
-        return contactHelper;
+    public UserHelper getUserHelper() {
+        return userHelper;
     }
 }
