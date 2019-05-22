@@ -13,12 +13,12 @@ public class UserDeletionTests extends TestBase {
         if(!app.getUserHelper().isThereAUser()){
             app.getUserHelper().createUser(new UserData("Alex", "V", "Golubkov", "100111 Tvetskaya str 123", "+79991112233", "email@email.com", "TestGroup"), true);
         }
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().homePage();
         List<UserData> before = app.getUserHelper().getUserList();
         app.getUserHelper().selectUser(before.size()-1);
         app.getUserHelper().deleteSelectedUser();
         app.getUserHelper().submitUserDeletion();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().homePage();
         List<UserData> after = app.getUserHelper().getUserList();
 
         Assert.assertEquals(after.size(),before.size()-1);
@@ -33,11 +33,11 @@ public class UserDeletionTests extends TestBase {
         if(!app.getUserHelper().isThereAUser()){
             app.getUserHelper().createUser(new UserData("Alex", "V", "Golubkov", "100111 Tvetskaya str 123", "+79991112233", "email@email.com", "TestGroup"), true);
         }
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().homePage();
         List<UserData> before = app.getUserHelper().getUserList();
         app.getUserHelper().initModificationUser();
         app.getUserHelper().deleteEditUser();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().homePage();
         List<UserData> after = app.getUserHelper().getUserList();
         Assert.assertEquals(after.size(),before.size()-1);
 
