@@ -3,10 +3,14 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.UserData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserHelper extends HelperBase {
 
@@ -47,8 +51,9 @@ public class UserHelper extends HelperBase {
         click(By.xpath("(//input[@name='update'])[2]"));
     }
 
-    public void selectUser() {
-        click(By.name("selected[]"));
+    public void selectUser(int i) {
+
+        wd.findElements(By.name("selected[]")).get(i).click();
     }
 
     public void deleteSelectedUser() {
@@ -71,5 +76,20 @@ public class UserHelper extends HelperBase {
 
     public boolean isThereAUser() {
         return isElementPresent(By.name("selected[]"));
+    }
+
+    public List<UserData> getUserList() {
+        List<UserData> users = new ArrayList<UserData>();
+        List<WebElement> elements = wd.findElements(By.xpath("//*[@name='entry']"));
+        for(WebElement element : elements){
+            List<WebElement> fields = element.findElements(By.tagName("td"));
+            String lastname = fields.get(1).getText();
+            String firstname = fields.get(2).getText();
+            String addr = fields.get(3).getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
+            UserData user = new UserData(id, firstname, null, lastname, addr, null, null, null);
+            users.add(user);
+        }
+        return users;
     }
 }
