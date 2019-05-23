@@ -15,7 +15,7 @@ public class UserCreationTests extends TestBase {
         app.goTo().homePage();
         List<UserData> before = app.getUserHelper().getUserList();
         app.getUserHelper().initCreationUser();
-        UserData user = new UserData("Alex", "V", "Golubkov", "100111 Tvetskaya str 123", "+79991112233", "email@email.com", "TestGroup");
+        UserData user = new UserData("Alex", "V", "Golubkov", "100111 Tvetskaya str 123","+79223334455","q@q.ru","TestGroup");
         app.getUserHelper().fillUserForm(user, true);
         app.getUserHelper().submitUserCreation();
         app.goTo().homePage();

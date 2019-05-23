@@ -4,6 +4,9 @@ import java.util.Objects;
 
 public class GroupData {
 
+
+
+
     public void setId(int id) {
         this.id = id;
     }
@@ -24,6 +27,13 @@ public class GroupData {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    public GroupData(int id, String name) {
+        this.id = id;
+        this.name = name;
+        this.header = null;
+        this.footer = null;
     }
 
     public GroupData(String name, String header, String footer) {
