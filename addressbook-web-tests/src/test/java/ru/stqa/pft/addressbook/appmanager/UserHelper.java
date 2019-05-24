@@ -7,10 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.model.UserData;
+import ru.stqa.pft.addressbook.model.Users;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class UserHelper extends HelperBase {
 
@@ -47,15 +51,19 @@ public class UserHelper extends HelperBase {
         click(By.xpath("//img[@alt='Edit']"));
     }
 
+    public void initModificationUserById(int id) {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+
     public void submitUserModification() {
         click(By.xpath("(//input[@name='update'])[2]"));
     }
 
-    public void selectUser(int i) {
 
-        wd.findElements(By.name("selected[]")).get(i).click();
+    public void selectUserById(int id) {
+
+        wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
     }
-
     public void deleteSelectedUser() {
         click(By.xpath("//input[@value='Delete']"));
     }
@@ -68,19 +76,20 @@ public class UserHelper extends HelperBase {
         click(By.xpath("//input[@value='Delete']"));
     }
 
-    public void deleteFromEdit() {
+    public void deleteFromEdit(UserData user) {
+      selectUserById(user.getId());
       initModificationUser();
       deleteEditUser();
     }
 
     public void modify(UserData user, boolean cre) {
-      initModificationUser();
+      initModificationUserById(user.getId());
       fillUserForm(user, cre);
       submitUserModification();
     }
 
-    public void delete(int index) {
-        selectUser(index);
+    public void delete(UserData user) {
+        selectUserById(user.getId());
         deleteSelectedUser();
         submitUserDeletion();
     }
@@ -107,6 +116,21 @@ public class UserHelper extends HelperBase {
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
             UserData user = new UserData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(addr);
             users.add(user);
+        }
+        return users;
+    }
+
+    public Users all() {
+        Users users = new Users();
+        List<WebElement> elements = wd.findElements(By.xpath("//*[@name='entry']"));
+        for(WebElement element : elements){
+            List<WebElement> fields = element.findElements(By.tagName("td"));
+            String lastname = fields.get(1).getText();
+            String firstname = fields.get(2).getText();
+            String addr = fields.get(3).getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
+
+            users.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(addr));
         }
         return users;
     }

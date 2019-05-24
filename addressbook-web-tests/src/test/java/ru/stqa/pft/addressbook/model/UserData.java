@@ -4,6 +4,20 @@ import java.util.Objects;
 
 public class UserData {
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserData userData = (UserData) o;
+        return id == userData.id &&
+                Objects.equals(firstname, userData.firstname) &&
+                Objects.equals(lastname, userData.lastname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstname, lastname);
+    }
 
     private  int id = Integer.MAX_VALUE;
     private  String firstname;
@@ -95,17 +109,4 @@ public class UserData {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserData userData = (UserData) o;
-        return  Objects.equals(firstname, userData.firstname) &&
-                Objects.equals(lastname, userData.lastname);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstname, lastname);
-    }
 }
