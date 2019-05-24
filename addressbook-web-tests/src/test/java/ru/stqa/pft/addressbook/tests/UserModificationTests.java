@@ -12,17 +12,15 @@ public class UserModificationTests extends TestBase {
     @Test
     public void testUserModifications() throws Exception {
         app.goTo().homePage();
-        if(!app.getUserHelper().isThereAUser()){
-            app.getUserHelper().createUser(new UserData("Alex", "V", "Golubkov", "100111 Tvetskaya str 123", "+79991112233", "email@email.com", "TestGroup"), true);
+        if(!app.user().isThereAUser()){
+            app.user().create(new UserData().withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup("TestGroup"), true);
         }
         app.goTo().homePage();
-        List<UserData> before = app.getUserHelper().getUserList();
-        app.getUserHelper().initModificationUser();
-        UserData user = new UserData(before.get(0).getId(),"Alex_new", "V_new", "Golubkov_new", "100111 Tvetskaya str 123_new", "+79991112233_new", "email@email_new.com",null);
-        app.getUserHelper().fillUserForm(user, false);
-        app.getUserHelper().submitUserModification();
+        List<UserData> before = app.user().list();
+        UserData user = new UserData().withId(before.get(0).getId()).withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup("TestGroup");
+        app.user().modify(user,false);
         app.goTo().homePage();
-        List<UserData> after = app.getUserHelper().getUserList();
+        List<UserData> after = app.user().list();
         Assert.assertEquals(after.size(),before.size());
 
         before.remove(0);
@@ -34,6 +32,8 @@ public class UserModificationTests extends TestBase {
         Assert.assertEquals(before,after);
 
     }
+
+
 
 
 }

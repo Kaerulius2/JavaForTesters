@@ -13,13 +13,13 @@ public class UserCreationTests extends TestBase {
     @Test
     public void testUserCreations() throws Exception {
         app.goTo().homePage();
-        List<UserData> before = app.getUserHelper().getUserList();
-        app.getUserHelper().initCreationUser();
-        UserData user = new UserData("Alex", "V", "Golubkov", "100111 Tvetskaya str 123","+79223334455","q@q.ru","TestGroup");
-        app.getUserHelper().fillUserForm(user, true);
-        app.getUserHelper().submitUserCreation();
+        List<UserData> before = app.user().list();
+        UserData user = new UserData().withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup("TestGroup");
+
+        app.user().create(user,true);
+
         app.goTo().homePage();
-        List<UserData> after = app.getUserHelper().getUserList();
+        List<UserData> after = app.user().list();
         Assert.assertEquals(after.size(),before.size()+1);
 
         before.add(user);
@@ -29,5 +29,7 @@ public class UserCreationTests extends TestBase {
         after.sort(byId);
         Assert.assertEquals(before,after);
     }
+
+
 
 }

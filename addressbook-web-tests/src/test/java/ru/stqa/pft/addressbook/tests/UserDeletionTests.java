@@ -10,39 +10,39 @@ public class UserDeletionTests extends TestBase {
 
     @Test
     public void testUserDeletionFromHome() throws Exception {
-        if(!app.getUserHelper().isThereAUser()){
-            app.getUserHelper().createUser(new UserData("Alex", "V", "Golubkov", "100111 Tvetskaya str 123", "+79991112233", "email@email.com", "TestGroup"), true);
+        if(!app.user().isThereAUser()){
+            app.user().create(new UserData().withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup("TestGroup"), true);
         }
         app.goTo().homePage();
-        List<UserData> before = app.getUserHelper().getUserList();
-        app.getUserHelper().selectUser(before.size()-1);
-        app.getUserHelper().deleteSelectedUser();
-        app.getUserHelper().submitUserDeletion();
+        List<UserData> before = app.user().list();
+        int index=before.size()-1;
+        app.user().delete(index);
         app.goTo().homePage();
-        List<UserData> after = app.getUserHelper().getUserList();
+        List<UserData> after = app.user().list();
 
         Assert.assertEquals(after.size(),before.size()-1);
-
         before.remove(before.size()-1);
-
         Assert.assertEquals(before, after);
     }
 
+
+
     @Test
     public void testUserDeletionFromEdit() throws Exception {
-        if(!app.getUserHelper().isThereAUser()){
-            app.getUserHelper().createUser(new UserData("Alex", "V", "Golubkov", "100111 Tvetskaya str 123", "+79991112233", "email@email.com", "TestGroup"), true);
+        if(!app.user().isThereAUser()){
+            app.user().create(new UserData().withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup("TestGroup"), true);
         }
         app.goTo().homePage();
-        List<UserData> before = app.getUserHelper().getUserList();
-        app.getUserHelper().initModificationUser();
-        app.getUserHelper().deleteEditUser();
+        List<UserData> before = app.user().list();
+        app.user().deleteFromEdit();
         app.goTo().homePage();
-        List<UserData> after = app.getUserHelper().getUserList();
+        List<UserData> after = app.user().list();
         Assert.assertEquals(after.size(),before.size()-1);
 
         before.remove(0);
         Assert.assertEquals(before, after);
     }
+
+
 
 }

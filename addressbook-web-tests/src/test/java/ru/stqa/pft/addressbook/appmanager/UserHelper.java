@@ -68,17 +68,35 @@ public class UserHelper extends HelperBase {
         click(By.xpath("//input[@value='Delete']"));
     }
 
-    public void createUser(UserData user,boolean cr) {
+    public void deleteFromEdit() {
+      initModificationUser();
+      deleteEditUser();
+    }
+
+    public void modify(UserData user, boolean cre) {
+      initModificationUser();
+      fillUserForm(user, cre);
+      submitUserModification();
+    }
+
+    public void delete(int index) {
+        selectUser(index);
+        deleteSelectedUser();
+        submitUserDeletion();
+    }
+
+    public void create(UserData user, boolean cr) {
         initCreationUser();
         fillUserForm(user,cr);
         submitUserCreation();
     }
 
+
     public boolean isThereAUser() {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public List<UserData> getUserList() {
+    public List<UserData> list() {
         List<UserData> users = new ArrayList<UserData>();
         List<WebElement> elements = wd.findElements(By.xpath("//*[@name='entry']"));
         for(WebElement element : elements){
@@ -87,7 +105,7 @@ public class UserHelper extends HelperBase {
             String firstname = fields.get(2).getText();
             String addr = fields.get(3).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-            UserData user = new UserData(id, firstname, lastname, addr);
+            UserData user = new UserData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(addr);
             users.add(user);
         }
         return users;
