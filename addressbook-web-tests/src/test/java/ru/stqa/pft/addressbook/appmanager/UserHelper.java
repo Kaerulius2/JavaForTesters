@@ -109,13 +109,17 @@ public class UserHelper extends HelperBase {
         initModificationUserById(user.getId());
         String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
         String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String address = wd.findElement(By.name("address")).getAttribute("value");
         String home = wd.findElement(By.name("home")).getAttribute("value");
         String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
         String work = wd.findElement(By.name("work")).getAttribute("value");
+        String email = wd.findElement(By.name("email")).getAttribute("value");
+        String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+        String email3 = wd.findElement(By.name("email3")).getAttribute("value");
         wd.navigate().back();
 
-        return new UserData().withId(user.getId()).withFirstname(firstname).withLastname(lastname)
-                .withHomePhone(home).withWorkPhone(work).withMobilePhone(mobile);
+        return new UserData().withId(user.getId()).withFirstname(firstname).withLastname(lastname).withAddress(address)
+                .withHomePhone(home).withWorkPhone(work).withMobilePhone(mobile).withEmail(email).withEmail2(email2).withEmail3(email3);
     }
 
 
@@ -134,10 +138,9 @@ public class UserHelper extends HelperBase {
             String firstname = fields.get(2).getText();
             String addr = fields.get(3).getText();
             String allphones = fields.get(5).getText();
-            String[] phones = allphones.split("\n");
+            String allemails = fields.get(4).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-            userCache.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(addr)
-                    .withHomePhone(phones[0]).withWorkPhone(phones[2]).withMobilePhone(phones[1]));
+            userCache.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(addr).withAllPhones(allphones).withallemails(allemails));
         }
         return new Users(userCache);
     }
