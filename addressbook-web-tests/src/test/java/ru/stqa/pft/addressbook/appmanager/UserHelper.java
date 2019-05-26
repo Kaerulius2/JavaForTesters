@@ -52,7 +52,8 @@ public class UserHelper extends HelperBase {
     }
 
     public void initModificationUserById(int id) {
-        click(By.xpath("//img[@alt='Edit']"));
+        WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']",id))).findElement(By.xpath("./../../td[8]/a"));
+        checkbox.click();
     }
 
     public void submitUserModification() {
@@ -62,7 +63,7 @@ public class UserHelper extends HelperBase {
 
     public void selectUserById(int id) {
 
-        wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
+        wd.findElement(By.cssSelector(String.format("input[value='%s']",id))).click();
     }
     public void deleteSelectedUser() {
         click(By.xpath("//input[@value='Delete']"));
@@ -77,32 +78,37 @@ public class UserHelper extends HelperBase {
     }
 
     public void deleteFromEdit(UserData user) {
-      selectUserById(user.getId());
-      initModificationUser();
+      initModificationUserById(user.getId());
       deleteEditUser();
+      userCache = null;
     }
 
     public void modify(UserData user, boolean cre) {
       initModificationUserById(user.getId());
       fillUserForm(user, cre);
       submitUserModification();
+      userCache = null;
     }
 
     public void delete(UserData user) {
         selectUserById(user.getId());
         deleteSelectedUser();
         submitUserDeletion();
+        userCache = null;
     }
 
     public void create(UserData user, boolean cr) {
         initCreationUser();
         fillUserForm(user,cr);
         submitUserCreation();
+        userCache = null;
     }
 
+    public UserData infoFromEditForm(UserData user) {
 
-    public boolean isThereAUser() {
-        return isElementPresent(By.name("selected[]"));
+        initModificationUserById(user.getId());
+
+        return null;
     }
 
     public List<UserData> list() {
@@ -120,8 +126,14 @@ public class UserHelper extends HelperBase {
         return users;
     }
 
+    private Users userCache = null;
+
     public Users all() {
-        Users users = new Users();
+        if(userCache!=null){
+            return new Users(userCache);
+        }
+
+        userCache = new Users();
         List<WebElement> elements = wd.findElements(By.xpath("//*[@name='entry']"));
         for(WebElement element : elements){
             List<WebElement> fields = element.findElements(By.tagName("td"));
@@ -130,8 +142,10 @@ public class UserHelper extends HelperBase {
             String addr = fields.get(3).getText();
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
 
-            users.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(addr));
+            userCache.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(addr));
         }
-        return users;
+        return new Users(userCache);
     }
+
+
 }
