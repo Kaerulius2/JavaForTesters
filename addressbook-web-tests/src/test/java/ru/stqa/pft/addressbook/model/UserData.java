@@ -4,21 +4,6 @@ import java.util.Objects;
 
 public class UserData {
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UserData userData = (UserData) o;
-        return id == userData.id &&
-                Objects.equals(firstname, userData.firstname) &&
-                Objects.equals(lastname, userData.lastname);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstname, lastname);
-    }
-
     private  int id = Integer.MAX_VALUE;
     private  String firstname;
     private  String midname;
@@ -27,6 +12,24 @@ public class UserData {
     private  String homephone;
     private  String email;
     private  String group;
+    private  String homePhone;
+    private  String workPhone;
+    private  String mobilePhone;
+
+    public UserData withHomePhone(String homePhone) {
+        this.homePhone = homePhone;
+        return this;
+    }
+
+    public UserData withWorkPhone(String workPhone) {
+        this.workPhone = workPhone;
+        return this;
+    }
+
+    public UserData withMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+        return this;
+    }
 
     public UserData withId(int id) {
         this.id = id;
@@ -53,10 +56,6 @@ public class UserData {
         return this;
     }
 
-    public UserData withHomephone(String homephone) {
-        this.homephone = homephone;
-        return this;
-    }
 
     public UserData withEmail(String email) {
         this.email = email;
@@ -71,6 +70,18 @@ public class UserData {
 
     public int getId() {
         return id;
+    }
+
+    public String getHomePhone() {
+        return homePhone;
+    }
+
+    public String getWorkPhone() {
+        return workPhone;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
     }
 
     public String getFirstname() {
@@ -108,5 +119,18 @@ public class UserData {
                 ", address='" + address + '\'' +
                 '}';
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserData userData = (UserData) o;
+        return id == userData.id &&
+                Objects.equals(firstname, userData.firstname) &&
+                Objects.equals(lastname, userData.lastname);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstname, lastname);
+    }
 }

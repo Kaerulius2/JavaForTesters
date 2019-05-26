@@ -107,24 +107,17 @@ public class UserHelper extends HelperBase {
     public UserData infoFromEditForm(UserData user) {
 
         initModificationUserById(user.getId());
+        String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+        String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String home = wd.findElement(By.name("home")).getAttribute("value");
+        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+        String work = wd.findElement(By.name("work")).getAttribute("value");
+        wd.navigate().back();
 
-        return null;
+        return new UserData().withId(user.getId()).withFirstname(firstname).withLastname(lastname)
+                .withHomePhone(home).withWorkPhone(work).withMobilePhone(mobile);
     }
 
-    public List<UserData> list() {
-        List<UserData> users = new ArrayList<UserData>();
-        List<WebElement> elements = wd.findElements(By.xpath("//*[@name='entry']"));
-        for(WebElement element : elements){
-            List<WebElement> fields = element.findElements(By.tagName("td"));
-            String lastname = fields.get(1).getText();
-            String firstname = fields.get(2).getText();
-            String addr = fields.get(3).getText();
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-            UserData user = new UserData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(addr);
-            users.add(user);
-        }
-        return users;
-    }
 
     private Users userCache = null;
 
@@ -140,9 +133,11 @@ public class UserHelper extends HelperBase {
             String lastname = fields.get(1).getText();
             String firstname = fields.get(2).getText();
             String addr = fields.get(3).getText();
+            String allphones = fields.get(5).getText();
+            String[] phones = allphones.split("\n");
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-
-            userCache.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(addr));
+            userCache.add(new UserData().withId(id).withFirstname(firstname).withLastname(lastname).withAddress(addr)
+                    .withHomePhone(phones[0]).withWorkPhone(phones[2]).withMobilePhone(phones[1]));
         }
         return new Users(userCache);
     }
