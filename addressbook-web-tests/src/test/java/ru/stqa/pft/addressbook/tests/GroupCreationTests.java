@@ -4,6 +4,7 @@ import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,11 +16,16 @@ public class GroupCreationTests extends TestBase {
 
 
     @DataProvider
-    public Iterator<Object[]> validGroups(){
+    public Iterator<Object[]> validGroups() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        list.add(new Object[] {new GroupData().withName("TestGroup1").withHeader("Header_1").withFooter("Footer_1")});
-        list.add(new Object[] {new GroupData().withName("TestGroup2").withHeader("Header_2").withFooter("Footer_2")});
-        list.add(new Object[] {new GroupData().withName("TestGroup3").withHeader("Header_3").withFooter("Footer_3")});
+        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/groups.csv"));
+        String line = reader.readLine();
+        while(line!=null){
+
+            String[] split = line.split(";");
+            list.add(new Object[] {new GroupData().withName(split[0]).withHeader(split[1]).withFooter(split[2])});
+            line = reader.readLine();
+        }
         return list.iterator();
     }
 
