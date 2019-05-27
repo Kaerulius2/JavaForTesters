@@ -1,0 +1,27 @@
+<list>
+  <ru.stqa.pft.addressbook.model.UserData>
+    <firstname>Alex_0</firstname>
+    <lastname>Gol_0</lastname>
+    <address>Tversrfyz str house 0</address>
+  </ru.stqa.pft.addressbook.model.UserData>
+  <ru.stqa.pft.addressbook.model.UserData>
+    <firstname>Alex_1</firstname>
+    <lastname>Gol_1</lastname>
+    <address>Tversrfyz str house 1</address>
+  </ru.stqa.pft.addressbook.model.UserData>
+  <ru.stqa.pft.addressbook.model.UserData>
+    <firstname>Alex_2</firstname>
+    <lastname>Gol_2</lastname>
+    <address>Tversrfyz str house 2</address>
+  </ru.stqa.pft.addressbook.model.UserData>
+  <ru.stqa.pft.addressbook.model.UserData>
+    <firstname>Alex_3</firstname>
+    <lastname>Gol_3</lastname>
+    <address>Tversrfyz str house 3</address>
+  </ru.stqa.pft.addressbook.model.UserData>
+  <ru.stqa.pft.addressbook.model.UserData>
+    <firstname>Alex_4</firstname>
+    <lastname>Gol_4</lastname>
+    <address>Tversrfyz str house 4</address>
+  </ru.stqa.pft.addressbook.model.UserData>
+</list>
