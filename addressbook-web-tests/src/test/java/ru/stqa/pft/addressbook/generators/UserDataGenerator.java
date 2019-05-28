@@ -45,7 +45,7 @@ public class UserDataGenerator {
         if(format.equals("xml")){
             saveAsXml(users, new File(file));
         }else if(format.equals("json")) {
-            saveAsXml(users, new File(file));
+            saveAsJson(users, new File(file));
         }else{
             System.out.println("Unrecognized format: "+ format);
         }
@@ -74,7 +74,7 @@ public class UserDataGenerator {
     private List<UserData> generateUsers(int count) {
         List<UserData> users = new ArrayList<UserData>();
         for(int i=0; i<count;i++){
-            users.add(new UserData().withFirstname(String.format("Alex_%s",i)).withLastname(String.format("Gol_%s",i)).withAddress(String.format("Tversrfyz str house %s",i)));
+            users.add(new UserData().withFirstname(String.format("Alex_%s",i)).withLastname(String.format("Gol_%s",i)).withAddress(String.format("107000 Tverskaya str house %s",i)));
         }
         return users;
     }
