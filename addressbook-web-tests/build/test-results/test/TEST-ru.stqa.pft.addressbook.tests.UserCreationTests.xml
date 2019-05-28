@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.UserCreationTests" tests="5" skipped="0" failures="0" errors="0" timestamp="2019-05-28T10:17:55" hostname="DESKTOP-CQ9CB9M" time="46.581">
+  <properties/>
+  <testcase name="testUserCreations[0](UserData{id=2147483647, firstname='Alex_0', lastname='Gol_0', address='107000 Tverskaya str house 0'})" classname="ru.stqa.pft.addressbook.tests.UserCreationTests" time="12.586"/>
+  <testcase name="testUserCreations[1](UserData{id=2147483647, firstname='Alex_1', lastname='Gol_1', address='107000 Tverskaya str house 1'})" classname="ru.stqa.pft.addressbook.tests.UserCreationTests" time="8.583"/>
+  <testcase name="testUserCreations[2](UserData{id=2147483647, firstname='Alex_2', lastname='Gol_2', address='107000 Tverskaya str house 2'})" classname="ru.stqa.pft.addressbook.tests.UserCreationTests" time="8.136"/>
+  <testcase name="testUserCreations[3](UserData{id=2147483647, firstname='Alex_3', lastname='Gol_3', address='107000 Tverskaya str house 3'})" classname="ru.stqa.pft.addressbook.tests.UserCreationTests" time="8.477"/>
+  <testcase name="testUserCreations[4](UserData{id=2147483647, firstname='Alex_4', lastname='Gol_4', address='107000 Tverskaya str house 4'})" classname="ru.stqa.pft.addressbook.tests.UserCreationTests" time="8.797"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

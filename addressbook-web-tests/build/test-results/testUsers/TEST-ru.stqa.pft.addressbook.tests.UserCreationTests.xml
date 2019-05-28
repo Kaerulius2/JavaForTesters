@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.UserCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-05-28T12:02:18" hostname="DESKTOP-CQ9CB9M" time="7.522">
+  <properties/>
+  <testcase name="testUserCreations[0](UserData{id=2147483647, firstname='Alex_0', lastname='Gol_0', address='107000 Tverskaya str house 0'})" classname="ru.stqa.pft.addressbook.tests.UserCreationTests" time="7.522"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -55,9 +55,10 @@ public class UserDataGenerator {
     private void saveAsJson(List<UserData> users, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(users);
-        Writer writer = new FileWriter(file);
-        writer.write(json);
-        writer.close();
+        try(Writer writer = new FileWriter(file)){
+            writer.write(json);
+        }
+
 
     }
 
@@ -65,9 +66,10 @@ public class UserDataGenerator {
         XStream xStream = new XStream();
         xStream.processAnnotations(UserData.class);
         String xml = xStream.toXML(users);
-        Writer writer = new FileWriter(file);
+        try (Writer writer = new FileWriter(file)){
         writer.write(xml);
-        writer.close();
+        }
+
     }
 
 

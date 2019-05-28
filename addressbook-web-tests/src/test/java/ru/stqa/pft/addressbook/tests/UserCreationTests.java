@@ -30,33 +30,36 @@ public class UserCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validUsersFromXml() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.xml"));
-        String xml = "";
-        String line = reader.readLine();
-        while (line != null) {
-            xml += line;
-            line = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.xml"))) {
+
+            String xml = "";
+            String line = reader.readLine();
+            while (line != null) {
+                xml += line;
+                line = reader.readLine();
+            }
+            XStream xStream = new XStream();
+            xStream.processAnnotations(UserData.class);
+            List<UserData> users = (List<UserData>) xStream.fromXML(xml);
+            return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator(); //список преобразуем в поток, оборачиваем каждый объект в массив, собираем из массива список, берем итератор
         }
-        XStream xStream = new XStream();
-        xStream.processAnnotations(UserData.class);
-        List<UserData> users = (List<UserData>) xStream.fromXML(xml);
-        return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator(); //список преобразуем в поток, оборачиваем каждый объект в массив, собираем из массива список, берем итератор
     }
 
     @DataProvider
     public Iterator<Object[]> validUsersFromJson() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.json"));
-        String json="";
-        String line = reader.readLine();
-        while(line!=null){
-            json+=line;
-            line = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.json"))) {
+            String json = "";
+            String line = reader.readLine();
+            while (line != null) {
+                json += line;
+                line = reader.readLine();
+            }
+            Gson gson = new Gson();
+            List<UserData> users = gson.fromJson(json, new TypeToken<List<UserData>>() {
+            }.getType()); //List<UserData>.class
+            return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator(); //список преобразуем в поток, оборачиваем каждый объект в массив, собираем из массива список, берем итератор
         }
-        Gson gson = new Gson();
-        List<UserData> users = gson.fromJson(json, new TypeToken<List<UserData>>(){}.getType()); //List<UserData>.class
-        return users.stream().map((g)->new Object[] {g}).collect(Collectors.toList()).iterator(); //список преобразуем в поток, оборачиваем каждый объект в массив, собираем из массива список, берем итератор
-
     }
 
     @Test(dataProvider = "validUsersFromJson")
