@@ -7,14 +7,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-    private final Properties properties;
+    private Properties properties;
     WebDriver wd;
     private UserHelper userHelper;
     private NavigationHelper navigationHelper;
@@ -34,13 +33,13 @@ public class ApplicationManager {
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties",target))));
 
         if(browser.equals(BrowserType.CHROME)) {
-            System.setProperty("webdriver.chrome.driver", "C:\\Chromedriver\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", properties.getProperty("path.chromedriver"));
             wd = new ChromeDriver();
         }else if(browser.equals(BrowserType.FIREFOX)){
-            System.setProperty("webdriver.gecko.driver", "C:\\Geckodriver\\geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", properties.getProperty("path.firefoxdriver"));
             wd = new FirefoxDriver();
         }else if (browser.equals(BrowserType.EDGE)){
-            System.setProperty("webdriver.edge.driver", "C:\\Edgedriver\\MicrosoftWebDriver.exe"); //C:\Edgedriver
+            System.setProperty("webdriver.edge.driver", properties.getProperty("path.edgedriver")); //C:\Edgedriver
             wd = new EdgeDriver();
         }
         wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
@@ -57,7 +56,7 @@ public class ApplicationManager {
         wd.quit();
     }
 
-
+    public Properties prop() {return properties;}
 
     public GroupHelper group() {
         return groupHelper;

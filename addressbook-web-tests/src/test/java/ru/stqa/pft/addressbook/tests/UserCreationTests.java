@@ -3,17 +3,11 @@ package ru.stqa.pft.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.model.UserData;
 import ru.stqa.pft.addressbook.model.Users;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,7 +24,7 @@ public class UserCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validUsersFromXml() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.xml"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(app.prop().getProperty("path.data.users.xml")))) {
 
             String xml = "";
             String line = reader.readLine();
@@ -48,7 +42,7 @@ public class UserCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validUsersFromJson() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/users.json"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(app.prop().getProperty("path.data.users.json")))) {
             String json = "";
             String line = reader.readLine();
             while (line != null) {
