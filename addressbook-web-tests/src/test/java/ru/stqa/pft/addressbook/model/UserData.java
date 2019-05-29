@@ -3,30 +3,70 @@ package ru.stqa.pft.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
+import java.io.File;
 import java.util.Objects;
 
 @XStreamAlias("user")
+@Entity
+@Table(name = "addressbook")
 public class UserData {
     @XStreamOmitField
+    @Id
+    @Column(name="id")
     private  int id = Integer.MAX_VALUE;
     @Expose
+    @Column(name="firstname")
     private  String firstname;
+    @Column(name="middlename")
     private  String midname;
     @Expose
+    @Column(name="lastname")
     private  String lastname;
     @Expose
+    @Column(name="address")
+    @Type(type = "text")
     private  String address;
-    private  String homephone;
+    @Column(name="email")
+    @Type(type = "text")
     private  String email;
+    @Column(name="email2")
+    @Type(type = "text")
     private  String email2;
+    @Column(name="email3")
+    @Type(type = "text")
     private  String email3;
+    @Transient
     private  String allemails;
+    @Transient
     private  String group;
+    @Column(name="home")
+    @Type(type = "text")
     private  String homePhone;
+    @Column(name="work")
+    @Type(type = "text")
     private  String workPhone;
+    @Column(name="mobile")
+    @Type(type = "text")
     private  String mobilePhone;
+    @Transient
     private  String allphones;
+    @Column(name="photo")
+    @Type(type = "text")
+    private String photo;
+
+    public UserData withPhoto(File photo) {
+        this.photo = photo.getPath();
+        return this;
+    }
+
+    public File getPhoto() {
+        return new File(photo);
+    }
+
+
 
     public UserData withAllPhones(String allphones) {
         this.allphones = allphones;
@@ -147,10 +187,6 @@ public class UserData {
         return address;
     }
 
-    public String getHomephone() {
-        return homephone;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -164,8 +200,12 @@ public class UserData {
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", address='" + address + '\'' +
+                ", homePhone='" + homePhone + '\'' +
+                ", workPhone='" + workPhone + '\'' +
+                ", mobilePhone='" + mobilePhone + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -173,13 +213,15 @@ public class UserData {
         UserData userData = (UserData) o;
         return id == userData.id &&
                 Objects.equals(firstname, userData.firstname) &&
-                Objects.equals(lastname, userData.lastname);
+                Objects.equals(lastname, userData.lastname) &&
+                Objects.equals(address, userData.address) &&
+                Objects.equals(homePhone, userData.homePhone) &&
+                Objects.equals(workPhone, userData.workPhone) &&
+                Objects.equals(mobilePhone, userData.mobilePhone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname);
+        return Objects.hash(id, firstname, lastname, address, homePhone, workPhone, mobilePhone);
     }
-
-
 }

@@ -5,6 +5,7 @@ import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.UserData;
 import ru.stqa.pft.addressbook.model.Users;
 
@@ -20,23 +21,24 @@ public class UserModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions(){
-        app.goTo().homePage();
 
-        if(app.user().all().size()==0){
-            app.user().create(new UserData().withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup("TestGroup2"),true);
+        if(app.db().users().size()==0){
+            GroupData someGroup = app.db().groups().iterator().next();
+            app.user().create(new UserData().withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup(someGroup.getName()),true);
         }
     }
 
     @Test
     public void testUserModifications() throws Exception {
         app.goTo().homePage();
-        Users before = app.user().all();
+        Users before = app.db().users();
         UserData modifiedUser = before.iterator().next();
         UserData user = new UserData().withId(modifiedUser.getId()).withFirstname("Alex_New").withMidname("V")
-                .withLastname("Golubkov_new").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru");
+                .withLastname("Golubkov_new").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withHomePhone("+7911111111")
+                .withWorkPhone("+7(499)2223344").withMobilePhone("8-921-222-11-22");
         app.user().modify(user,false);
         app.goTo().homePage();
-        Users after = app.user().all();
+        Users after = app.db().users();
         assertEquals(after.size(),before.size());
 
         before.remove(modifiedUser);

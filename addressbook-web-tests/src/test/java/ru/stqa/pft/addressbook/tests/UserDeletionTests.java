@@ -20,21 +20,21 @@ public class UserDeletionTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions(){
-        app.goTo().homePage();
 
-        if(app.user().all().size()==0){
-            app.user().create(new UserData().withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup("TestGroup2"),true);
+        if(app.db().users().size()==0){
+            GroupData someGroup = app.db().groups().iterator().next();
+            app.user().create(new UserData().withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup(someGroup.getName()),true);
         }
     }
 
     @Test
     public void testUserDeletionFromHome() throws Exception {
         app.goTo().homePage();
-        Users before = app.user().all();
+        Users before = app.db().users();
         UserData deletedUser = before.iterator().next();
         app.user().delete(deletedUser);
         app.goTo().homePage();
-        Users after = app.user().all();
+        Users after = app.db().users();
         assertEquals(after.size(),before.size()-1);
 
         assertThat(after, equalTo(before.without(deletedUser)));
@@ -45,11 +45,11 @@ public class UserDeletionTests extends TestBase {
     @Test
     public void testUserDeletionFromEdit() throws Exception {
         app.goTo().homePage();
-        Users before = app.user().all();
+        Users before = app.db().users();
         UserData deletedUser = before.iterator().next();
         app.user().deleteFromEdit(deletedUser);
         app.goTo().homePage();
-        Users after = app.user().all();
+        Users after = app.db().users();
         assertEquals(after.size(),before.size()-1);
 
         before.remove(deletedUser);

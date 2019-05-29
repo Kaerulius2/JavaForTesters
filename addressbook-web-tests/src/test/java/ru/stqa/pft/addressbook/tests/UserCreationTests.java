@@ -58,16 +58,15 @@ public class UserCreationTests extends TestBase {
 
     @Test(dataProvider = "validUsersFromJson")
     public void testUserCreations(UserData user) throws Exception {
-        app.goTo().groupPage();
-        GroupData someGroup = app.group().all().iterator().next();
+        //app.goTo().groupPage();
+        GroupData someGroup = app.db().groups().iterator().next();
         app.goTo().homePage();
-        Users before = app.user().all();
+        Users before = app.db().users();
         user.withGroup(someGroup.getName());
         app.user().create(user,true);
         app.goTo().homePage();
-        Users after = app.user().all();
+        Users after = app.db().users();
         assertEquals(after.size(),before.size()+1);
-
 
         assertThat(after, equalTo(before.withAdded(user.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt()))));
     }

@@ -27,7 +27,9 @@ public class UserHelper extends HelperBase {
         type(By.name("middlename"),userData.getMidname());
         type(By.name("lastname"),userData.getLastname());
         type(By.name("address"),userData.getAddress());
-        type(By.name("home"),userData.getHomephone());
+        type(By.name("home"),userData.getHomePhone());
+        type(By.name("work"),userData.getWorkPhone());
+        type(By.name("mobile"),userData.getMobilePhone());
         type(By.name("email"),userData.getEmail());
         if(creation){
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());

@@ -2,7 +2,10 @@
   {
     "firstname": "Alex_0",
     "lastname": "Gol_0",
-    "address": "107000 Tverskaya str house 0"
+    "address": "107000 Tverskaya str house 0",
+    "homePhone": "+1h",
+    "workPhone": "+2w",
+    "mobilePhone": "+3m"
   }
 
 ]
