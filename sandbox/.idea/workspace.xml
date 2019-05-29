@@ -103,14 +103,56 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/tests/DbConnectionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+            <state relative-caret-position="289">
+              <caret line="17" column="67" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/tests/HbConnectionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/model/GroupData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/hibernate.cfg.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -154,7 +196,6 @@
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/tests/UserAddressTests.java" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/appmanager/UserHelper.java" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/groups.csv" />
-        <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/model/GroupData.java" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/tests/UserCreationTests.java" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/generators/UserDataGenerator.java" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/generators/GroupDataGenerator.java" />
@@ -163,11 +204,14 @@
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/testng-groups.xml" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/testng-contacts.xml" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/users.json" />
-        <option value="$PROJECT_DIR$/../addressbook-web-tests/build.gradle" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/local.properties" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/tests/TestBase.java" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/appmanager/ApplicationManager.java" />
         <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/tests/DbConnectionTest.java" />
+        <option value="$PROJECT_DIR$/../addressbook-web-tests/build.gradle" />
+        <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/tests/HbConnectionTest.java" />
+        <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/hibernate.cfg.xml" />
+        <option value="$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/model/GroupData.java" />
       </list>
     </option>
   </component>
@@ -306,22 +350,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.DbConnectionTest.testDbConnection">
-    <configuration name="GroupDataGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.addressbook.generators.GroupDataGenerator" />
-      <module name="addressbook-web-tests.test" />
-      <option name="PROGRAM_PARAMETERS" value="-c 3 -f src/test/resources/groups.json -d json" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../addressbook-web-tests" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.stqa.pft.addressbook.generators.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="TestNG.HbConnectionTest.testHbConnection">
     <configuration name="UserDataGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.addressbook.generators.UserDataGenerator" />
       <module name="addressbook-web-tests.test" />
@@ -365,6 +394,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HbConnectionTest.testHbConnection" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="addressbook-web-tests.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.stqa.pft.addressbook.tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.stqa.pft.addressbook.tests" />
+      <option name="MAIN_CLASS_NAME" value="ru.stqa.pft.addressbook.tests.HbConnectionTest" />
+      <option name="METHOD_NAME" value="testHbConnection" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserCreationTests.testUserCreations" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="addressbook-web-tests.test" />
       <extension name="coverage">
@@ -393,19 +440,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.GroupDataGenerator" />
       <item itemvalue="Application.UserDataGenerator" />
       <item itemvalue="TestNG.UserCreationTests.testUserCreations" />
       <item itemvalue="TestNG.C:/JavaForTesters/JavaForTesters/addressbook-web-tests/src/test/resources/testng.xml" />
       <item itemvalue="TestNG.DbConnectionTest.testDbConnection" />
+      <item itemvalue="TestNG.HbConnectionTest.testHbConnection" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.HbConnectionTest.testHbConnection" />
         <item itemvalue="TestNG.DbConnectionTest.testDbConnection" />
         <item itemvalue="TestNG.UserCreationTests.testUserCreations" />
         <item itemvalue="TestNG.C:/JavaForTesters/JavaForTesters/addressbook-web-tests/src/test/resources/testng.xml" />
         <item itemvalue="Application.UserDataGenerator" />
-        <item itemvalue="Application.GroupDataGenerator" />
       </list>
     </recent_temporary>
   </component>
@@ -423,35 +470,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="C__JavaForTesters_JavaForTesters_addressbook-web-tests_src_test_resources_testng_xml - 2019.05.28 at 12h 49m 17s.xml">
-      <configuration name="C:/JavaForTesters/JavaForTesters/addressbook-web-tests/src/test/resources/testng.xml" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="C__JavaForTesters_JavaForTesters_addressbook-web-tests_src_test_resources_testng_xml - 2019.05.28 at 12h 51m 05s.xml">
-      <configuration name="C:/JavaForTesters/JavaForTesters/addressbook-web-tests/src/test/resources/testng.xml" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="C__JavaForTesters_JavaForTesters_addressbook-web-tests_src_test_resources_testng_xml - 2019.05.28 at 12h 54m 57s.xml">
-      <configuration name="C:/JavaForTesters/JavaForTesters/addressbook-web-tests/src/test/resources/testng.xml" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="C__JavaForTesters_JavaForTesters_addressbook-web-tests_src_test_resources_testng_xml - 2019.05.28 at 12h 57m 54s.xml">
-      <configuration name="C:/JavaForTesters/JavaForTesters/addressbook-web-tests/src/test/resources/testng.xml" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="C__JavaForTesters_JavaForTesters_addressbook-web-tests_src_test_resources_testng_xml - 2019.05.28 at 13h 12m 02s.xml">
-      <configuration name="C:/JavaForTesters/JavaForTesters/addressbook-web-tests/src/test/resources/testng.xml" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="UserCreationTests_testUserCreations - 2019.05.28 at 14h 23m 07s.xml">
-      <configuration name="UserCreationTests.testUserCreations" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="UserCreationTests_testUserCreations - 2019.05.28 at 14h 25m 52s.xml">
-      <configuration name="UserCreationTests.testUserCreations" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="DbConnectionTest_testDbConnection - 2019.05.29 at 14h 12m 27s.xml">
-      <configuration name="DbConnectionTest.testDbConnection" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="DbConnectionTest_testDbConnection - 2019.05.29 at 14h 14m 34s.xml">
-      <configuration name="DbConnectionTest.testDbConnection" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="DbConnectionTest_testDbConnection - 2019.05.29 at 14h 57m 48s.xml">
       <configuration name="DbConnectionTest.testDbConnection" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="HbConnectionTest_testHbConnection - 2019.05.29 at 15h 50m 33s.xml">
+      <configuration name="HbConnectionTest.testHbConnection" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="HbConnectionTest_testHbConnection - 2019.05.29 at 17h 09m 21s.xml">
+      <configuration name="HbConnectionTest.testHbConnection" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="HbConnectionTest_testHbConnection - 2019.05.29 at 17h 10m 56s.xml">
+      <configuration name="HbConnectionTest.testHbConnection" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="HbConnectionTest_testHbConnection - 2019.05.29 at 17h 14m 31s.xml">
+      <configuration name="HbConnectionTest.testHbConnection" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="HbConnectionTest_testHbConnection - 2019.05.29 at 17h 15m 06s.xml">
+      <configuration name="HbConnectionTest.testHbConnection" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="HbConnectionTest_testHbConnection - 2019.05.29 at 17h 16m 15s.xml">
+      <configuration name="HbConnectionTest.testHbConnection" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="HbConnectionTest_testHbConnection - 2019.05.29 at 17h 28m 19s.xml">
+      <configuration name="HbConnectionTest.testHbConnection" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="HbConnectionTest_testHbConnection - 2019.05.29 at 17h 29m 44s.xml">
+      <configuration name="HbConnectionTest.testHbConnection" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="HbConnectionTest_testHbConnection - 2019.05.29 at 17h 30m 22s.xml">
+      <configuration name="HbConnectionTest.testHbConnection" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -704,20 +751,6 @@
     <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/groups.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/model/GroupData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#741#742#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#1268#1269#0" expanded="true" />
-            <element signature="e#1293#1294#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/groups.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -789,13 +822,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/testng-users.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -844,13 +870,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="25" column="55" selection-start-line="25" selection-start-column="55" selection-end-line="25" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/tests/DbConnectionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        <state relative-caret-position="289">
+          <caret line="17" column="67" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/model/GroupData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/java/ru/stqa/pft/addressbook/tests/HbConnectionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../addressbook-web-tests/src/test/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
         </state>
       </provider>
     </entry>
