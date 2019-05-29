@@ -24,7 +24,7 @@ public class UserDeletionTests extends TestBase {
         if(app.db().users().size()==0){
             app.goTo().homePage();
             GroupData someGroup = app.db().groups().iterator().next();
-            app.user().create(new UserData().withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup(someGroup.getName()),true);
+            //app.user().create(new UserData().withFirstname("Alex").withMidname("V").withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup(someGroup.getName()),true);
         }
     }
 

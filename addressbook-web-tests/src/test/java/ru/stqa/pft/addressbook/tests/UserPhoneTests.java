@@ -19,8 +19,8 @@ public class UserPhoneTests extends TestBase{
     public void ensurePreconditions(){
 
         if(app.db().users().size()==0){
-            app.user().create(new UserData().withFirstname("Alex").withMidname("V")
-                    .withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup("TestGroup2"),true);
+          //  app.user().create(new UserData().withFirstname("Alex").withMidname("V")
+          //          .withLastname("Golubkov").withAddress("100111 Tvetskaya str 123").withEmail("q@q.ru").withGroup("TestGroup2"),true);
         }
     }
 

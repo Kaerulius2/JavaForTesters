@@ -6,6 +6,7 @@ import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.model.UserData;
 import ru.stqa.pft.addressbook.model.Users;
 import java.io.BufferedReader;
@@ -55,14 +56,15 @@ public class UserCreationTests extends TestBase {
             return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator(); //список преобразуем в поток, оборачиваем каждый объект в массив, собираем из массива список, берем итератор
         }
     }
+//если нет группы - создать
 
     @Test(dataProvider = "validUsersFromJson")
     public void testUserCreations(UserData user) throws Exception {
-        //app.goTo().groupPage();
-        GroupData someGroup = app.db().groups().iterator().next();
+        Groups someGroup = app.db().groups();
         app.goTo().homePage();
         Users before = app.db().users();
-        user.withGroup(someGroup.getName());
+        user.inGroup(someGroup.iterator().next());
+        //user.withGroup(someGroup.getName());
         app.user().create(user,true);
         app.goTo().homePage();
         Users after = app.db().users();

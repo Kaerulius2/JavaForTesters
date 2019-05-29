@@ -31,9 +31,15 @@ public class UserHelper extends HelperBase {
         type(By.name("work"),userData.getWorkPhone());
         type(By.name("mobile"),userData.getMobilePhone());
         type(By.name("email"),userData.getEmail());
-        if(creation){
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
-        }else{
+
+        if(creation) {
+            if (userData.getGroups().size() > 0) {
+
+                Assert.assertTrue(userData.getGroups().size() == 1);
+                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroups().iterator().next().getName());
+            }
+        }
+        else{
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
 
