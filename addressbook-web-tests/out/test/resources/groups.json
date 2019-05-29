@@ -3,15 +3,6 @@
     "name": "TestGroup0",
     "header": "Header0",
     "footer": "Footer0"
-  },
-  {
-    "name": "TestGroup1",
-    "header": "Header1",
-    "footer": "Footer1"
-  },
-  {
-    "name": "TestGroup2",
-    "header": "Header2",
-    "footer": "Footer2"
   }
+
 ]
