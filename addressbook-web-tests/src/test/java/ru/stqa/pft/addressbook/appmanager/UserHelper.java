@@ -1,20 +1,15 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.GroupData;
-import ru.stqa.pft.addressbook.model.Groups;
 import ru.stqa.pft.addressbook.model.UserData;
 import ru.stqa.pft.addressbook.model.Users;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class UserHelper extends HelperBase {
 
@@ -71,14 +66,24 @@ public class UserHelper extends HelperBase {
 
     public void selectUserById(int id) {
 
-        wd.findElement(By.cssSelector(String.format("input[value='%s']",id))).click();
+        wd.findElement(By.cssSelector(String.format("input[value='%s']", id))).click();
     }
+
+    public void selectGroupNameByValue(String groupName){
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(groupName);
+    }
+
     public void deleteSelectedUser() {
         click(By.xpath("//input[@value='Delete']"));
     }
 
     public void submitUserDeletion() {
         wd.switchTo().alert().accept();
+    }
+
+    public void submitAddingToGroup(){
+
+        click(By.xpath("//input[@value='Add to']"));
     }
 
     public void deleteEditUser() {
@@ -89,6 +94,13 @@ public class UserHelper extends HelperBase {
       initModificationUserById(user.getId());
       deleteEditUser();
       userCache = null;
+    }
+
+    public void addToGroup(UserData user, GroupData group){
+        selectUserById(user.getId());
+        selectGroupNameByValue(Integer.toString(group.getId()));
+        submitAddingToGroup();
+        userCache = null;
     }
 
     public void modify(UserData user, boolean cre) {

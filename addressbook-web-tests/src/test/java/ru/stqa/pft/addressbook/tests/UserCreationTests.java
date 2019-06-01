@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -56,7 +57,14 @@ public class UserCreationTests extends TestBase {
             return users.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator(); //список преобразуем в поток, оборачиваем каждый объект в массив, собираем из массива список, берем итератор
         }
     }
-//если нет группы - создать
+    @BeforeMethod
+    public void ensurePreconditions(){ //Если нет групп, то создаем одну, чтобы добавить нового пользователя в эту группу.
+
+        if(app.db().groups().size()==0){
+            app.goTo().groupPage();
+            app.group().create(new GroupData().withName("Test_Group").withHeader("Header").withFooter("Footer"));
+        }
+    }
 
     @Test(dataProvider = "validUsersFromJson")
     public void testUserCreations(UserData user) throws Exception {
@@ -64,9 +72,7 @@ public class UserCreationTests extends TestBase {
         app.goTo().homePage();
         Users before = app.db().users();
         user.inGroup(someGroup.iterator().next());
-        //user.withGroup(someGroup.getName());
         app.user().create(user,true);
-        app.goTo().homePage();
         Users after = app.db().users();
         assertEquals(after.size(),before.size()+1);
 
