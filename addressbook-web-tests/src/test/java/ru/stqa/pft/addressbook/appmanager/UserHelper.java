@@ -69,8 +69,8 @@ public class UserHelper extends HelperBase {
         wd.findElement(By.cssSelector(String.format("input[value='%s']", id))).click();
     }
 
-    public void selectGroupNameByValue(String groupName){
-        new Select(wd.findElement(By.name("to_group"))).selectByValue(groupName);
+    public void selectGroupNameByValue(String groupID){
+        new Select(wd.findElement(By.name("to_group"))).selectByValue(groupID);
     }
 
     public void deleteSelectedUser() {
@@ -101,6 +101,22 @@ public class UserHelper extends HelperBase {
         selectGroupNameByValue(Integer.toString(group.getId()));
         submitAddingToGroup();
         userCache = null;
+    }
+
+    public void selectGroupFromList(String groupID){
+        new Select(wd.findElement(By.name("group"))).selectByValue(groupID);
+    }
+
+    public void removeFromGroup(UserData user, GroupData group) {
+        //нужно открыть селектом группу, чекнуть нужный контакт, нажать на кнопку REMOVE from <Имя группы>
+        selectGroupFromList(Integer.toString(group.getId()));
+        selectUserById(user.getId());
+        submitRemoveUserFromGroup(group.getName());
+        userCache = null;
+    }
+
+    private void submitRemoveUserFromGroup(String groupName) {
+        click(By.xpath(String.format("//input[@value='Remove from \"%s\"']",groupName)));
     }
 
     public void modify(UserData user, boolean cre) {
@@ -164,6 +180,7 @@ public class UserHelper extends HelperBase {
         }
         return new Users(userCache);
     }
+
 
 
 }
