@@ -11,6 +11,8 @@ import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
 
+import static org.testng.Assert.*;
+
 public class RegistrationTests extends TestBase {
 
    // @BeforeMethod
@@ -23,7 +25,7 @@ public class RegistrationTests extends TestBase {
         long now=System.currentTimeMillis();
         String user = String.format("User%s",now);
         String password = "password";
-        String email = String.format("user%s@localhost.localdomain",now);
+        String email = String.format("user%s@localhost",now);
         app.james().createUser(user,password);
         app.registration().start(user, email);
         //List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
@@ -31,7 +33,7 @@ public class RegistrationTests extends TestBase {
         String confirmationLink = findConfirmationLink(mailMessages, email);
 
         app.registration().finish(confirmationLink, password);
-        Assert.assertTrue(app.newSession().login(user,password));
+        assertTrue(app.newSession().login(user,password));
     }
 
     private String findConfirmationLink(List<MailMessage> mailMessages, String email) {

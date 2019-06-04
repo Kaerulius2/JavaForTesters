@@ -35,8 +35,8 @@ public class HttpSession {
         params.add(new BasicNameValuePair("return", "index.php"));
         post.setEntity(new UrlEncodedFormEntity(params)); //Тут происходит упаковка передаваемых параметров. Затем он помещается в запрос "post".
         CloseableHttpResponse response = httpClient.execute(post); //Тут происходит отправка запроса
-        String body = getTextFrom(response); //Тут происходит получение текаста запроса (в виде кода на HTML).
-        return body.contains(String.format("<span class=\"italic\">%s</span>", username)); //Тут происходит проверка того, что действит-но ли юзер вошел в систему.
+        String body = getTextFrom(response); //Тут происходит получение текста запроса (в виде кода на HTML).
+        return body.contains(String.format("<span class=\"italic\">%s</span>", username)); //Тут происходит проверка того, что юзер вошел в систему.
     }
 
     private String getTextFrom(CloseableHttpResponse response) throws IOException {
