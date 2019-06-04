@@ -28,8 +28,8 @@ public class ChangePasswordTests extends TestBase {
         app.password().submitResetPassword();
         List<MailMessage> mailMessages = app.james().waitForMail(user,password,100000);
         String confirmationLink = findChangeConfirmLink(mailMessages, email);
-        //app.password().confirmChange(confirmationLink,newPassword);       //написал своё подтверждение
-        app.registration().finish(confirmationLink,newPassword);            //но работает и метод из регистрации
+        app.password().confirmChange(confirmationLink,newPassword);       //написал своё подтверждение
+        //app.registration().finish(confirmationLink,newPassword);            //но работает и метод из регистрации
         assertTrue(app.newSession().login(user,newPassword));
     }
 

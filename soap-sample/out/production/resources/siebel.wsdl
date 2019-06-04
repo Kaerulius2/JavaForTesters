@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="http://siebel.com/CustomUI" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsdLocal1="http://www.siebel.com/xml/PromoCode" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsdLocal2="http://www.siebel.com/xml/UAL%20Promotion%20Code" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://siebel.com/CustomUI">
+  <types>
+    <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://siebel.com/CustomUI">
+      <xsd:import namespace="http://www.siebel.com/xml/UAL%20Promotion%20Code"/>
+      <xsd:import namespace="http://www.siebel.com/xml/PromoCode"/>
+      <xsd:element name="UALPromotionCodesclosePromoCode_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="promoCodeName" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodesclosePromoCode_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="result" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodesunholdPromoCode_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="promoCodeName" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodesunholdPromoCode_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="result" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodesServicegetPromoCode_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="promoCampaignId" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodesServicegetPromoCode_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="promoCode" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodesholdPromoCode_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="holdTime" type="xsd:string"/>
+            <xsd:element name="promoCodeName" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodesholdPromoCode_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ErrorCode" type="xsd:string"/>
+            <xsd:element name="ErrorMessage" minOccurs="0" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodescheckPromoCode_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="xsdLocal1:PromoCode" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodescheckPromoCode_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ErrorCode" type="xsd:string"/>
+            <xsd:element name="ErrorMessage" minOccurs="0" type="xsd:string"/>
+            <xsd:element ref="xsdLocal2:ListOfUalPromotionCode" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodesagreePersonalInfo_Input">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Number" minOccurs="0" type="xsd:string"/>
+            <xsd:element name="Type" minOccurs="0" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UALPromotionCodesagreePersonalInfo_Output">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="ErrorCode" type="xsd:string"/>
+            <xsd:element name="ErrorMessage" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://www.siebel.com/xml/UAL%20Promotion%20Code">
+      <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="ListOfUalPromotionCode" type="xsdLocal2:ListOfUalPromotionCode"/>
+      <xsd:complexType name="ListOfUalPromotionCodeTopElmt">
+        <xsd:sequence>
+          <xsd:element name="ListOfUalPromotionCode" maxOccurs="1" minOccurs="1" type="xsdLocal2:ListOfUalPromotionCode"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListOfUalPromotionCode">
+        <xsd:sequence>
+          <xsd:element name="UalPromotionCode" maxOccurs="unbounded" minOccurs="0" type="xsdLocal2:UalPromotionCode"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UalPromotionCode">
+        <xsd:sequence>
+          <xsd:element name="CalculationMethod" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="Name" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="ParentCampaignId" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="Rating" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="Status" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="Type" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="Unique" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="Exclude" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="Description" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="StartDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="EndDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="ListOfUalPromoCodeCampaignDirection" maxOccurs="1" minOccurs="0" type="xsdLocal2:ListOfUalPromoCodeCampaignDirection"/>
+          <xsd:element name="ListOfInternalAddServices" maxOccurs="1" minOccurs="0" type="xsdLocal2:ListOfInternalAddServices"/>
+          <xsd:element name="ListOfRate" maxOccurs="1" minOccurs="0" type="xsdLocal2:ListOfRate"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListOfUalPromoCodeCampaignDirection">
+        <xsd:sequence>
+          <xsd:element name="UalPromoCodeCampaignDirection" maxOccurs="unbounded" minOccurs="0" type="xsdLocal2:UalPromoCodeCampaignDirection"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UalPromoCodeCampaignDirection">
+        <xsd:sequence>
+          <xsd:element name="Id" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="From" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="To" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="RT" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListOfInternalAddServices">
+        <xsd:sequence>
+          <xsd:element name="AddService" maxOccurs="unbounded" minOccurs="0" type="xsdLocal2:AddService"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AddService">
+        <xsd:sequence>
+          <xsd:element name="ProductCode" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListOfRate">
+        <xsd:sequence>
+          <xsd:element name="Rate" maxOccurs="unbounded" minOccurs="0" type="xsdLocal2:Rate"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Rate">
+        <xsd:sequence>
+          <xsd:element name="Code" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://www.siebel.com/xml/PromoCode">
+      <xsd:annotation>
+        <xsd:documentation>Copyright (C) 2001-2004 Siebel Systems, Inc. All rights reserved. Siebel XSD Generation</xsd:documentation>
+      </xsd:annotation>
+      <xsd:element name="PromoCode" type="xsdLocal1:PromoCode"/>
+      <xsd:complexType name="PromoCodeTopElmt">
+        <xsd:sequence>
+          <xsd:element name="PromoCode" maxOccurs="1" minOccurs="1" type="xsdLocal1:PromoCode"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PromoCode">
+        <xsd:sequence>
+          <xsd:element name="Name" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+          <xsd:element name="AirportDept" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+          <xsd:element name="AirportArr" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+          <xsd:element name="CardNumber" maxOccurs="1" minOccurs="1" type="xsd:string"/>
+          <xsd:element name="ReturnDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="FlightDate" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+          <xsd:element name="NumberOfPassengers" maxOccurs="1" minOccurs="0" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+  <message name="UALPromotionCodesclosePromoCode_Input">
+    <part name="UALPromotionCodesclosePromoCode_Input" element="tns:UALPromotionCodesclosePromoCode_Input"/>
+  </message>
+  <message name="UALPromotionCodesclosePromoCode_Output">
+    <part name="UALPromotionCodesclosePromoCode_Output" element="tns:UALPromotionCodesclosePromoCode_Output"/>
+  </message>
+  <message name="UALPromotionCodesunholdPromoCode_Input">
+    <part name="UALPromotionCodesunholdPromoCode_Input" element="tns:UALPromotionCodesunholdPromoCode_Input"/>
+  </message>
+  <message name="UALPromotionCodesunholdPromoCode_Output">
+    <part name="UALPromotionCodesunholdPromoCode_Output" element="tns:UALPromotionCodesunholdPromoCode_Output"/>
+  </message>
+  <message name="UALPromotionCodesServicegetPromoCode_Input">
+    <part name="UALPromotionCodesServicegetPromoCode_Input" element="tns:UALPromotionCodesServicegetPromoCode_Input"/>
+  </message>
+  <message name="UALPromotionCodesServicegetPromoCode_Output">
+    <part name="UALPromotionCodesServicegetPromoCode_Output" element="tns:UALPromotionCodesServicegetPromoCode_Output"/>
+  </message>
+  <message name="UALPromotionCodesholdPromoCode_Input">
+    <part name="UALPromotionCodesholdPromoCode_Input" element="tns:UALPromotionCodesholdPromoCode_Input"/>
+  </message>
+  <message name="UALPromotionCodesholdPromoCode_Output">
+    <part name="UALPromotionCodesholdPromoCode_Output" element="tns:UALPromotionCodesholdPromoCode_Output"/>
+  </message>
+  <message name="UALPromotionCodescheckPromoCode_Input">
+    <part name="UALPromotionCodescheckPromoCode_Input" element="tns:UALPromotionCodescheckPromoCode_Input"/>
+  </message>
+  <message name="UALPromotionCodescheckPromoCode_Output">
+    <part name="UALPromotionCodescheckPromoCode_Output" element="tns:UALPromotionCodescheckPromoCode_Output"/>
+  </message>
+  <message name="UALPromotionCodesagreePersonalInfo_Input">
+    <part name="UALPromotionCodesagreePersonalInfo_Input" element="tns:UALPromotionCodesagreePersonalInfo_Input"/>
+  </message>
+  <message name="UALPromotionCodesagreePersonalInfo_Output">
+    <part name="UALPromotionCodesagreePersonalInfo_Output" element="tns:UALPromotionCodesagreePersonalInfo_Output"/>
+  </message>
+  <portType name="UAL_spcPromotion_spcCodes_spcService">
+    <operation name="UALPromotionCodesclosePromoCode">
+      <input message="tns:UALPromotionCodesclosePromoCode_Input"/>
+      <output message="tns:UALPromotionCodesclosePromoCode_Output"/>
+    </operation>
+    <operation name="UALPromotionCodesunholdPromoCode">
+      <input message="tns:UALPromotionCodesunholdPromoCode_Input"/>
+      <output message="tns:UALPromotionCodesunholdPromoCode_Output"/>
+    </operation>
+    <operation name="UALPromotionCodesServicegetPromoCode">
+      <input message="tns:UALPromotionCodesServicegetPromoCode_Input"/>
+      <output message="tns:UALPromotionCodesServicegetPromoCode_Output"/>
+    </operation>
+    <operation name="UALPromotionCodesholdPromoCode">
+      <input message="tns:UALPromotionCodesholdPromoCode_Input"/>
+      <output message="tns:UALPromotionCodesholdPromoCode_Output"/>
+    </operation>
+    <operation name="UALPromotionCodescheckPromoCode">
+      <input message="tns:UALPromotionCodescheckPromoCode_Input"/>
+      <output message="tns:UALPromotionCodescheckPromoCode_Output"/>
+    </operation>
+    <operation name="UALPromotionCodesagreePersonalInfo">
+      <input message="tns:UALPromotionCodesagreePersonalInfo_Input"/>
+      <output message="tns:UALPromotionCodesagreePersonalInfo_Output"/>
+    </operation>
+  </portType>
+  <binding name="UAL_spcPromotion_spcCodes_spcService" type="tns:UAL_spcPromotion_spcCodes_spcService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="UALPromotionCodesclosePromoCode">
+      <soap:operation soapAction="document/http://siebel.com/CustomUI:UALPromotionCodesclosePromoCode"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UALPromotionCodesunholdPromoCode">
+      <soap:operation soapAction="document/http://siebel.com/CustomUI:UALPromotionCodesunholdPromoCode"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UALPromotionCodesServicegetPromoCode">
+      <soap:operation soapAction="document/http://siebel.com/CustomUI:UALPromotionCodesServicegetPromoCode"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UALPromotionCodesholdPromoCode">
+      <soap:operation soapAction="document/http://siebel.com/CustomUI:UALPromotionCodesholdPromoCode"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UALPromotionCodescheckPromoCode">
+      <soap:operation soapAction="document/http://siebel.com/CustomUI:UALPromotionCodescheckPromoCode"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UALPromotionCodesagreePersonalInfo">
+      <soap:operation soapAction="document/http://siebel.com/CustomUI:UALPromotionCodesagreePersonalInfo"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="UAL_spcPromotion_spcCodes_spcService">
+    <port binding="tns:UAL_spcPromotion_spcCodes_spcService" name="UAL_spcPromotion_spcCodes_spcService">
+      <soap:address location="http://localhost/eai_rus/start.swe?SWEExtSource=WebService&amp;SWEExtCmd=Execute&amp;WSSOAP=1"/>
+    </port>
+  </service>
+</definitions>
