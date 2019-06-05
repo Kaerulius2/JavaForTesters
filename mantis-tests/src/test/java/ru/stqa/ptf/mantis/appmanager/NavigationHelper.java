@@ -12,8 +12,9 @@ public class NavigationHelper extends HelperBase{
     }
 
     public void manageUserPage() {
+        wd.get(app.getProperty("web.baseUrl") + "/manage_overview_page.php");
         click(By.linkText("Manage Users"));
-        //type(); не понятнопочему нет подтверждения от админа
+
 
     }
 
