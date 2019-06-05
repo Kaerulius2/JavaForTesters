@@ -8,6 +8,7 @@ import ru.stqa.ptf.mantis.model.Issue;
 import ru.stqa.ptf.mantis.model.Project;
 
 import javax.xml.rpc.ServiceException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.Set;
@@ -15,9 +16,9 @@ import java.util.Set;
 public class SoapTests extends TestBase {
 
     @BeforeTest
-    public void skipNotFixed() throws RemoteException, ServiceException, MalformedURLException {
-            skipIfNotFixed(0000001);                    //для примера вызовем для конкретного Issue
-
+    public void skipNotFixed() throws IOException, ServiceException {
+            //skipIfNotFixed(0000001);                    //интеграция с mantis - SOAP
+            skipIfNotFixedBugify(1513);                 //интеграция с Bugify - REST
     }
 
     @Test

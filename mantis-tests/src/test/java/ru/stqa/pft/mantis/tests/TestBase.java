@@ -9,6 +9,7 @@ import ru.stqa.ptf.mantis.model.Issue;
 
 import javax.xml.rpc.ServiceException;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 
@@ -36,6 +37,20 @@ public class TestBase {
             return false;
         }
         return true;
+    }
+
+    public  boolean isIssueOpenBugify(int issueID) throws IOException {
+        Issue issue = app.rest().getIssueById(issueID);
+        if(issue.getResolution().equals("3")){
+            return false;
+        }else
+            return true;
+    }
+
+    public void skipIfNotFixedBugify(int issueId) throws IOException, ServiceException {
+        if (isIssueOpenBugify(issueId)) {
+            throw new SkipException("Ignored because of issue " + issueId);
+        }
     }
 
     public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {

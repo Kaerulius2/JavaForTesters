@@ -28,6 +28,12 @@ dependencies {
     compile("org.hibernate:hibernate-core:5.4.2.Final")
 
     compile("mysql:mysql-connector-java:8.0.16")
+
+    compile("com.google.code.gson:gson:2.6.1")
+
+    compile("org.apache.httpcomponents:httpclient:4.5.1")
+
+    compile("org.apache.httpcomponents:fluent-hc:4.5.1")
     
 }
 
