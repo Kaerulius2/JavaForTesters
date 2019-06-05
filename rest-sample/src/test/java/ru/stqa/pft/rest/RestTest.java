@@ -1,7 +1,12 @@
 package ru.stqa.pft.rest;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
+import org.apache.http.message.BasicNameValuePair;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,28 +21,35 @@ public class RestTest {
     public void testCreateIssue() throws IOException {
 
         Set<Issue> oldIssues = getIssues();
-        Issue newIssue = new Issue();
+        Issue newIssue = new Issue().withSubject("Test issue").withDescription("Test Desc");
         int issueId = createIssue(newIssue);
-        Set<Issue> newIssues = getIssues();
+
         oldIssues.add(newIssue.withId(issueId));
+        Set<Issue> newIssues = getIssues();
         assertEquals(newIssues,oldIssues);
     }
 
     private Set<Issue> getIssues() throws IOException {
-        String json = getExecutor().execute(Request.Get("http://demo.bugify.com/api/issues.json")).returnContent().asString();
-
-        return null;
+        String json = getExecutor().execute(Request.Get("http://bugify.stqa.ru/api/issues.json?limit=500")).returnContent().asString();
+        JsonElement parsed = new JsonParser().parse(json); // парсим json
+        JsonElement issues = parsed.getAsJsonObject().get("issues");//выбираем нужный элемент
+        return new Gson().fromJson(issues,new TypeToken<Set<Issue>>(){}.getType());
 
     }
 
     private Executor getExecutor() {
-        return Executor.newInstance().auth("LSGjeU4yP1X493ud1hNniA==","");
+        return Executor.newInstance().auth("288f44776e7bec4bf44fdfeb1e646490","");
     }
 
 
-    private int createIssue(Issue newIssue) {
+    private int createIssue(Issue newIssue) throws IOException {
+        String json = getExecutor().execute(Request.Post("http://bugify.stqa.ru/api/issues.json")
+                .bodyForm(new BasicNameValuePair("subject",newIssue.getSubject()),
+                          new BasicNameValuePair("description",newIssue.getDescription())))
+                .returnContent().asString();
+        JsonElement parsed = new JsonParser().parse(json);
+        return parsed.getAsJsonObject().get("issue_id").getAsInt();
 
-        return 0;
     }
 
 
