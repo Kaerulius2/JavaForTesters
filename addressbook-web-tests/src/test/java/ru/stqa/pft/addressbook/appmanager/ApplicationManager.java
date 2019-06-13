@@ -42,7 +42,7 @@ public class ApplicationManager {
         if("".equals(properties.getProperty("selenium.server"))) {
 
             if (browser.equals(BrowserType.CHROME)) {
-                System.setProperty("webdriver.chrome.driver", properties.getProperty("path.chromedriver"));
+                //System.setProperty("webdriver.chrome.driver", properties.getProperty("path.chromedriver"));
                 wd = new ChromeDriver();
             } else if (browser.equals(BrowserType.FIREFOX)) {
                 System.setProperty("webdriver.gecko.driver", properties.getProperty("path.firefoxdriver"));
