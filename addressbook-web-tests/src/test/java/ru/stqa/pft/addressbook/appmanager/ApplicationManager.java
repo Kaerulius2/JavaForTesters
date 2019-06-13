@@ -42,7 +42,7 @@ public class ApplicationManager {
         if("".equals(properties.getProperty("selenium.server"))) {
 
             if (browser.equals(BrowserType.CHROME)) {
-                //System.setProperty("webdriver.chrome.driver", properties.getProperty("path.chromedriver"));
+                System.setProperty("webdriver.chrome.driver", properties.getProperty("path.chromedriver"));
                 wd = new ChromeDriver();
             } else if (browser.equals(BrowserType.FIREFOX)) {
                 System.setProperty("webdriver.gecko.driver", properties.getProperty("path.firefoxdriver"));
@@ -55,7 +55,6 @@ public class ApplicationManager {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setBrowserName(browser);
             capabilities.setPlatform(Platform.fromString(System.getProperty("platform", "win10")));
-            System.setProperty("webdriver.chrome.driver", properties.getProperty("path.chromedriver"));
             wd = new RemoteWebDriver(new URL(properties.getProperty("selenium.server")),capabilities);
         }
         wd.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
